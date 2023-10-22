@@ -298,6 +298,8 @@ void readFile(int argc, char *argv[])
             weight.push_back(numbers[i]);
     }
 
+    // initialize the promblem matrix
+
     for (int i = 0; i <= nRow; i++)
     {
         for (int j = 0; j < nCol; j++)
@@ -324,45 +326,8 @@ void readFile(int argc, char *argv[])
     return;
 }
 
-int main(int argc, char *argv[])
+void printMatrix()
 {
-
-    nRow = 7;
-    nCol = 7;
-    // initialize the promblem matrix
-
-    readFile(argc, argv);
-
-    /*
-ProbMat[1][0] = true;
-ProbMat[1][3] = true;
-ProbMat[1][6] = true;
-ProbMat[2][0] = true;
-ProbMat[2][3] = true;
-ProbMat[3][3] = true;
-ProbMat[3][4] = true;
-ProbMat[3][6] = true;
-ProbMat[4][2] = true;
-ProbMat[4][4] = true;
-ProbMat[4][5] = true;
-ProbMat[5][1] = true;
-ProbMat[5][2] = true;
-ProbMat[5][5] = true;
-ProbMat[5][6] = true;
-ProbMat[6][1] = true;
-ProbMat[6][6] = true;
-ProbMat[7][0] = true;
-ProbMat[7][3] = true;
-
-ProbMat[1][0] = true;
-ProbMat[1][1] = true;
-ProbMat[2][1] = true;
-ProbMat[3][2] = true;
-ProbMat[3][1] = true;
-ProbMat[4][0] = true;
-ProbMat[4][3] = true;
-*/
-
     for (int i = 0; i < nRow; i++)
     {
         for (int j = 0; j <= nCol; j++)
@@ -382,8 +347,25 @@ ProbMat[4][3] = true;
         }
         printf("\n");
     }
+}
+
+int main(int argc, char *argv[])
+{
+
+    // read bench file
+    readFile(argc, argv);
+
+    // print the problem matrix
+    printMatrix();
+
+    // create 4-way linked matrix
     createToridolMatrix();
+
+    // find the solution
     search();
+
+    // print the min cost solution
     printMinSolutions();
+
     return 0;
 }
